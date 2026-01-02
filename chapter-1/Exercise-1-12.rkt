@@ -1,0 +1,25 @@
+#lang sicp
+
+(define (get-number row col)
+  (cond ((= 1 row) 1)
+        ((= 1 col) 1)
+        ((= row col) 1)
+        (else (+ (get-number (- row 1) (- col 1))
+                 (get-number (- row 1) col)))))
+
+(define (print-line line)
+  (define (print-line-iter i)
+    (display (get-number line i))
+    (display " ")
+    (if (= i line)
+        (newline)
+        (print-line-iter (+ 1 i))))
+  (print-line-iter 1))
+
+(define (pascal n)
+  (define (pascal-iter i)
+    (print-line i)
+    (if (= i n)
+        (newline)
+        (pascal-iter (+ 1 i))))
+  (pascal-iter 1))
