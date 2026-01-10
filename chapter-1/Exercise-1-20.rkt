@@ -1,0 +1,9 @@
+#lang sicp
+
+(define (gcd a b)
+  (if (= b 0)
+      a
+      (gcd b (remainder a b))))
+
+; normal order: 18
+; applicative order: 4 
